@@ -1,34 +1,53 @@
 # Python Practice
 
-A collection of Python exercises for strengthening programming fundamentals, logical thinking, and problem-solving skills.
+A collection of Python exercises and small projects for strengthening programming fundamentals, logical thinking, and problem-solving skills.
 
 ## Topics
 
-The repository is organized into folders covering concepts such as:
+The repository includes practice with:
 
-- Conditional statements
-- Loops and iteration
-- Functions
+- Conditional statements and loops
+- Functions and reusable logic
 - Lists and list-based problems
 - Dictionaries
 - File handling
+- Input validation and basic data analysis
 
-The collection will continue to grow as I practice new concepts and solve more problems.
+## Mini Projects
+
+### Student Grade Analyzer
+
+A command-line program that accepts comma-separated marks, validates the input, assigns a letter grade to each student, and reports class statistics.
+
+**Features**
+- Validates numeric marks within the 0–100 range
+- Assigns grades from A+ to F
+- Calculates average, highest, and lowest marks
+- Counts passing and failing students
+
+Run it from the repository root:
+
+```bash
+python projects/student_grade_analyzer.py
+```
 
 ## Getting Started
 
 1. Install Python 3.
 2. Clone the repository:
+
    ```bash
    git clone https://github.com/Ali204-hub/python_practices.git
    ```
+
 3. Open the project folder in your preferred editor.
-4. Run an individual Python file:
+4. Run an exercise or mini project using Python:
+
    ```bash
    python path/to/file.py
    ```
 
-Replace `path/to/file.py` with the path to the exercise you want to run.
+Replace `path/to/file.py` with the path to the Python file you want to run.
 
 ## Tools
 
@@ -38,10 +57,10 @@ Replace `path/to/file.py` with the path to the exercise you want to run.
 
 ## Learning Goals
 
-- Build a strong foundation in Python
-- Improve logical thinking through regular practice
-- Write readable, organized code
-- Progress toward practical software development projects
+- Strengthen Python fundamentals and problem-solving
+- Write readable, reusable code
+- Practice validating user input and summarizing data
+- Gradually build practical software development projects
 
 ## Author
 
