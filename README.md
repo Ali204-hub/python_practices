@@ -11,6 +11,7 @@ The repository includes practice with:
 - Lists and list-based problems
 - Dictionaries
 - File handling
+- Data structures: Trie prefix trees and Disjoint Set Union (Union-Find)
 - Input validation and basic data analysis
 
 ## Mini Projects
@@ -29,6 +30,25 @@ Run it from the repository root:
 
 ```bash
 python projects/student_grade_analyzer.py
+```
+
+## Data Structures
+
+### Trie (Prefix Tree)
+
+Run `python data_structures/trie.py` to see prefix-based word lookup. The
+implementation supports insertion, exact search, prefix checks, deletion,
+and listing matching words in sorted order.
+
+### Union-Find (Disjoint Set Union)
+
+Run `python data_structures/union_find.py` to see how connected groups can be
+merged and queried using path compression and union by size.
+
+Run the data-structure tests from the repository root:
+
+```bash
+python -m unittest discover -s tests -v
 ```
 
 ## Getting Started
