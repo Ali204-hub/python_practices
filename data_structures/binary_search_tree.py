@@ -1,5 +1,4 @@
-"""Binary search tree implementation for integer values."""
-
+""""Binary search tree implementation for integer values."""
 
 class BinarySearchTree:
     """Store unique integers while supporting search and sorted traversal."""
@@ -43,6 +42,40 @@ class BinarySearchTree:
             current = current.left if value < current.value else current.right
         return False
 
+    def delete(self, value: int) -> bool:
+        """Delete value and return True when a node was removed."""
+        parent: BinarySearchTree._Node | None = None
+        current = self._root
+
+        while current is not None and current.value != value:
+            parent = current
+            current = current.left if value < current.value else current.right
+
+        if current is None:
+            return False
+
+        if current.left is not None and current.right is not None:
+            successor_parent = current
+            successor = current.right
+            while successor.left is not None:
+                successor_parent = successor
+                successor = successor.left
+
+            current.value = successor.value
+            parent = successor_parent
+            current = successor
+
+        replacement = current.left if current.left is not None else current.right
+
+        if parent is None:
+            self._root = replacement
+        elif parent.left is current:
+            parent.left = replacement
+        else:
+            parent.right = replacement
+
+        return True
+
     def inorder(self) -> list[int]:
         """Return values in ascending order."""
         result: list[int] = []
@@ -80,6 +113,27 @@ if __name__ == "__main__":
             tree.insert(4)
             tree.insert(4)
             self.assertEqual(tree.inorder(), [4])
+
+        def test_delete_leaf_and_one_child(self) -> None:
+            tree = BinarySearchTree()
+            for value in [8, 3, 10, 1, 6]:
+                tree.insert(value)
+            self.assertTrue(tree.delete(1))
+            self.assertTrue(tree.delete(3))
+            self.assertEqual(tree.inorder(), [6, 8, 10])
+
+        def test_delete_node_with_two_children(self) -> None:
+            tree = BinarySearchTree()
+            for value in [8, 3, 10, 1, 6, 14, 4, 7]:
+                tree.insert(value)
+            self.assertTrue(tree.delete(3))
+            self.assertEqual(tree.inorder(), [1, 4, 6, 7, 8, 10, 14])
+
+        def test_delete_missing_value(self) -> None:
+            tree = BinarySearchTree()
+            tree.insert(5)
+            self.assertFalse(tree.delete(9))
+            self.assertEqual(tree.inorder(), [5])
 
         def test_empty_tree(self) -> None:
             tree = BinarySearchTree()
