@@ -90,6 +90,15 @@ class BinarySearchTree:
         visit(self._root)
         return result
 
+    def height(self) -> int:
+        """Return the number of nodes on the longest root-to-leaf path."""
+        def depth(node: BinarySearchTree._Node | None) -> int:
+            if node is None:
+                return 0
+            return 1 + max(depth(node.left), depth(node.right))
+
+        return depth(self._root)
+
 
 if __name__ == "__main__":
     import unittest
@@ -134,6 +143,13 @@ if __name__ == "__main__":
             tree.insert(5)
             self.assertFalse(tree.delete(9))
             self.assertEqual(tree.inorder(), [5])
+
+        def test_height_for_balanced_and_empty_trees(self) -> None:
+            tree = BinarySearchTree()
+            self.assertEqual(tree.height(), 0)
+            for value in [8, 3, 10, 1, 6]:
+                tree.insert(value)
+            self.assertEqual(tree.height(), 3)
 
         def test_empty_tree(self) -> None:
             tree = BinarySearchTree()
